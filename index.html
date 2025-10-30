@@ -1,88 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Het Patel | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Het Patel — Portfolio</title>
+
   <link rel="stylesheet" href="style.css" />
+  <!-- ScrollReveal for scroll animations -->
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Het Patel</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="menu-toggle">&#9776;</div>
-    </nav>
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="hero-inner container">
+      <div class="profile-block" id="profileBlock">
+        <div class="profile-img-wrap" id="profilePopup">
+          <!-- Replace profile.jpg with your real picture in assets/ -->
+          <img src="assets/profile.jpg" alt="Het Patel" class="profile-img" />
+        </div>
+        <div class="tagline">
+          <h1>Het Patel</h1>
+          <p class="subtitle">Computer Science • AI & Sustainable Computing</p>
+          <p class="cta">Building data-driven systems that solve real-world sustainability problems.</p>
+          <div class="links">
+            <a class="btn" href="#projects">My Projects</a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Hello, I'm <span>Het Patel</span> 👋</h1>
-      <p>Computer Science Graduate | AI & Sustainable Computing Enthusiast</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
+  <!-- Education -->
+  <section class="section dark" id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I'm passionate about designing intelligent systems that create a
-      positive impact on human life. My interests lie in AI, Data Science,
-      and building sustainable digital solutions. I have experience working
-      with compiler design, NLP-based resume screening tools, and research
-      in sustainable crop residue management.
-    </p>
-  </section>
+      <div class="edu-grid">
+        <article class="edu-card" data-sr>
+          <h3>New Jersey Institute of Technology (NJIT)</h3>
+          <span class="edu-duration">Sept 2025 — Present</span>
+          <p class="edu-degree">M.S. in Computer Science (Data Science / AI track) — ongoing</p>
+          <p><strong>Coursework (Currently studying):</strong></p>
+          <ul>
+            <li>Advanced Machine Learning</li>
+            <li>Deep Learning / NLP</li>
+            <li>Distributed Systems & Cloud</li>
+            <li>Data Mining & Visualization</li>
+          </ul>
+          <p><strong>CGPA / Notes:</strong> Admitted for Fall 2025 — currently enrolled.</p>
+        </article>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill">Python</div>
-      <div class="skill">Java</div>
-      <div class="skill">Machine Learning</div>
-      <div class="skill">Data Analysis</div>
-      <div class="skill">NLP (NLTK)</div>
-      <div class="skill">HTML / CSS / JS</div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Resume Sorting App</h3>
-        <p>Developed with NLTK & PyPDF to automatically categorize resumes using targeted keywords.</p>
-      </div>
-      <div class="project-card">
-        <h3>Crop Residue Management</h3>
-        <p>Published research on connecting farmers and industries through digital mediation for sustainability.</p>
+        <article class="edu-card" data-sr>
+          <h3>Dharmsinh Desai University</h3>
+          <span class="edu-duration">Completed — May 2024</span>
+          <p class="edu-degree">B.Tech in Information Technology</p>
+          <p><strong>Coursework (Previously completed):</strong></p>
+          <ul>
+            <li>Data Analysis & Information Extraction</li>
+            <li>Language Translator (Compiler Design)</li>
+            <li>Microprocessor Architecture & Interfacing</li>
+            <li>Advanced Microprocessor Architecture</li>
+          </ul>
+          <p><strong>Percentage:</strong> 68% (B.Tech)</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:hetpatel@example.com">hetpatel@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/hetpatel" target="_blank">@hetpatel</a></p>
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project-row">
+        <div class="project-cards">
+          <!-- Project 1 -->
+          <article class="project-card" data-sr>
+            <h3>Resume Sorting App</h3>
+            <p class="meta">Company / Org: Internship Project</p>
+            <h4>What we achieved</h4>
+            <ul>
+              <li>Built a resume sorter using NLTK + PyPDF that labels resumes with targeted keywords.</li>
+              <li>Automated keyword extraction and ranking — improved candidate shortlisting speed.</li>
+            </ul>
+            <p class="project-links">
+              <a href="https://github.com/hetpatel/resume-sorting" target="_blank">Repo</a>
+            </p>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" data-sr>
+            <h3>Sustainable Crop Residue Management</h3>
+            <p class="meta">Company / Org: Academic Research</p>
+            <h4>What we achieved</h4>
+            <ul>
+              <li>Designed a digital mediation model connecting farmers & industries to reduce residue burning.</li>
+              <li>Outlined distributed warehousing + auctioning — prototype & simulation results published.</li>
+            </ul>
+            <p class="project-links">
+              <a href="#publications">Publication</a>
+            </p>
+          </article>
+        </div>
+
+        <!-- Sliding output window (carousel) -->
+        <aside class="project-slider" data-sr>
+          <div class="slider-viewport">
+            <div class="slider-track" id="sliderTrack">
+              <!-- Replace placeholders with real output images -->
+              <figure class="slide"><img src="assets/project1-output.jpg" alt="Output 1" /></figure>
+              <figure class="slide"><img src="assets/project2-output.jpg" alt="Output 2" /></figure>
+              <figure class="slide"><img src="assets/project3-output.jpg" alt="Output 3" /></figure>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button id="prevBtn" aria-label="Previous">◀</button>
+            <button id="nextBtn" aria-label="Next">▶</button>
+          </div>
+        </aside>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Het Patel | Designed with ❤️</p>
+  <!-- Publications -->
+  <section class="section dark" id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications & Certifications</h2>
+
+      <div class="pub-grid">
+        <div class="pub-card" data-sr>
+          <div class="pub-left">
+            <img src="assets/certification.jpg" alt="Certification" />
+          </div>
+          <div class="pub-right">
+            <h3>Research Paper</h3>
+            <p><strong>Title:</strong> Sustainable Crop Residue Management Through Digital Mediation</p>
+            <p><strong>Journal:</strong> Journal of Scientific Computing (Volume 14)</p>
+            <p><strong>What we achieved:</strong></p>
+            <ul>
+              <li>Proposed a practical model linking farmers and manufacturers to reuse crop residues.</li>
+              <li>Reduced potential local burning events in simulation; proposed distributed warehousing + auction mechanism.</li>
+            </ul>
+            <p><a href="https://example.com/research-paper" target="_blank" class="link">Read the paper</a></p>
+          </div>
+        </div>
+
+        <div class="certs-row" data-sr>
+          <h4>Certificates</h4>
+          <div class="certs">
+            <figure class="cert"><img src="assets/cert1.jpg" alt="Certificate 1" /></figure>
+            <figure class="cert"><img src="assets/cert2.jpg" alt="Certificate 2" /></figure>
+            <figure class="cert"><img src="assets/cert3.jpg" alt="Certificate 3" /></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p>Email: <a class="link" href="mailto:hetpatel@example.com">hetpatel@example.com</a></p>
+      <p>GitHub: <a class="link" href="https://github.com/hetpatel" target="_blank">@hetpatel</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© 2025 Het Patel — Designed with ❤️</small>
+    </div>
   </footer>
 
   <script src="script.js"></script>
