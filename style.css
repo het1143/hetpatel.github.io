@@ -1,4 +1,6 @@
-/* Global Reset */
+/* =======================
+   GLOBAL STYLES
+======================= */
 * {
   margin: 0;
   padding: 0;
@@ -6,25 +8,160 @@
   scroll-behavior: smooth;
 }
 
-/* Full-page gradient background */
 body {
   font-family: "Poppins", sans-serif;
   color: #fff;
   background: linear-gradient(180deg, #000428 0%, #004e92 100%);
-  background-attachment: fixed;  /* Keeps gradient fixed while scrolling */
+  background-attachment: fixed;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Make sections transparent to show gradient through */
+/* =======================
+   NAVBAR
+======================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #90e0ef;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #00b4d8;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 10%;
+  min-height: 100vh;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.hero img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 4px solid #00b4d8;
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.5);
+  animation: popUp 1.2s ease-out forwards;
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-content {
+  max-width: 600px;
+  animation: fadeInRight 1.4s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: #90e0ef;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin: 15px 0 25px;
+  color: #e0fbfc;
+}
+
+.btn {
+  background: #00b4d8;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #90e0ef;
+  transform: scale(1.05);
+}
+
+/* =======================
+   SECTION DEFAULTS
+======================= */
 section {
+  padding: 80px 10%;
   background: transparent;
   position: relative;
   z-index: 2;
-  padding: 80px 10%;
 }
 
-/* Optional overlay fade effect (adds soft gradient between sections) */
 section::before {
   content: "";
   position: absolute;
@@ -36,47 +173,191 @@ section::before {
   z-index: -1;
 }
 
-/* Text Styling */
-h1, h2, h3, p, a {
-  color: #f1f1f1;
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #90e0ef;
+  margin-bottom: 50px;
 }
 
-/* Navbar should blend with background */
-header {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+/* =======================
+   EDUCATION SECTION
+======================= */
+.education {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
-/* Buttons, cards, and hover highlights */
-.btn {
-  background: #00b4d8;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: #90e0ef;
-  transform: scale(1.05);
-}
-
-/* Cards and project boxes blend softly */
-.project-card,
 .education-card {
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 340px;
+  padding: 25px;
+  transition: 0.3s ease;
 }
 
-.project-card:hover,
 .education-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+.education-card h3 {
+  color: #90e0ef;
+  margin-bottom: 8px;
+}
+
+.education-card span {
+  font-size: 0.9rem;
+  color: #ade8f4;
+}
+
+.education-card p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+/* =======================
+   PROJECTS SECTION
+======================= */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+}
+
+.project-details {
+  padding: 20px;
+}
+
+.project-details h3 {
+  color: #90e0ef;
+  margin-bottom: 10px;
+}
+
+.project-details p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.project-img {
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* =======================
+   PUBLICATION SECTION
+======================= */
+.publication {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.publication-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  width: 350px;
+  padding: 25px;
+  transition: 0.3s;
+}
+
+.publication-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+.publication-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.publication-card a {
+  color: #00b4d8;
+  text-decoration: none;
+}
+
+.publication-card a:hover {
+  text-decoration: underline;
+}
+
+/* =======================
+   FOOTER
+======================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  color: #90e0ef;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 8%;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .education-card,
+  .project-card,
+  .publication-card {
+    width: 100%;
+  }
 }
