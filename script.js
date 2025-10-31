@@ -1,57 +1,72 @@
-// --- Popup animation on load for profile image ---
+/* Photo popup + nav toggle + reveal-on-scroll + slider */
 document.addEventListener("DOMContentLoaded", () => {
-  const pWrap = document.getElementById("profilePopup");
-  // add class to trigger CSS animation
-  setTimeout(() => pWrap.classList.add("popup"), 260);
-
-  // small hover bounce on profile
-  pWrap.addEventListener("mouseenter", () => pWrap.style.transform = "scale(1.03)");
-  pWrap.addEventListener("mouseleave", () => pWrap.style.transform = "");
-});
-
-// --- ScrollReveal configuration ---
-if (window.ScrollReveal) {
-  const sr = ScrollReveal({
-    distance: "30px",
-    duration: 700,
-    easing: "cubic-bezier(.2,.9,.3,1)",
-    origin: "bottom",
-    scale: 1,
-    viewFactor: 0.12,
-    reset: false
-  });
-
-  sr.reveal(".hero-inner", { origin: "left", distance: "40px", duration: 900 });
-  sr.reveal(".section-title", { delay: 80, origin: "bottom" });
-  sr.reveal("[data-sr]", { interval: 120 });
-  sr.reveal(".project-slider", { origin: "right", distance: "40px" });
-  sr.reveal(".pub-card", { origin: "bottom" });
-}
-
-// --- Simple slider for the project-output sliding window ---
-(function () {
-  const track = document.getElementById("sliderTrack");
-  if (!track) return;
-  const slides = track.children;
-  let idx = 0;
-
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-  function show(index){
-    idx = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
+  // NAV toggle for small screens
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
   }
 
-  prevBtn.addEventListener("click", () => show(idx - 1));
-  nextBtn.addEventListener("click", () => show(idx + 1));
+  // Photo popup
+  const photoWrap = document.querySelector(".hero-photo");
+  setTimeout(() => {
+    if (photoWrap) photoWrap.classList.add("pop");
+    // small scale animation by adding class that triggers CSS (handled via .pop on .hero-photo)
+    photoWrap && photoWrap.classList.add("pop");
+    // also make img visible by adding .pop class effect
+    const img = photoWrap && photoWrap.querySelector("img");
+    if (img) img.style.transform = "scale(1)";
+    if (img) img.style.opacity = "1";
+  }, 220);
 
-  // auto-advance every 4.5s
+  // IntersectionObserver for reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        // once visible, we can unobserve for performance
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // Slider logic
+  const track = document.getElementById("track");
+  const slides = track ? track.children : [];
+  let idx = 0;
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+
+  function show(i){
+    if (!track) return;
+    idx = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+  }
+  if (prev && next) {
+    prev.addEventListener("click", () => show(idx - 1));
+    next.addEventListener("click", () => show(idx + 1));
+  }
+  // auto play
   let auto = setInterval(() => show(idx + 1), 4500);
-  [prevBtn, nextBtn].forEach(btn => {
+  [prev, next].forEach(btn => {
+    if (!btn) return;
     btn.addEventListener("click", () => {
       clearInterval(auto);
       auto = setInterval(() => show(idx + 1), 4500);
     });
   });
-})();
+
+  // Smooth in-page links offset for sticky nav
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      e.preventDefault();
+      const id = a.getAttribute("href").slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+});
