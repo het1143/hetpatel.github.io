@@ -1,194 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Het Patel — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Het Patel | CS Master's Student & Software Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0b0d17;
+            --card-bg: #15192b;
+            --primary: #64ffda; /* Neon Mint/Teal */
+            --text-main: #ccd6f6;
+            --text-secondary: #8892b0;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- Animations & Utilities --- */
+        .highlight { color: var(--primary); }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 300px;
+            background-color: var(--text-secondary);
+            margin-left: 20px;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            background: rgba(11, 13, 23, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            top: 0;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary); transform: translateY(-2px); }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+        .hero-content h5 { color: var(--primary); font-family: monospace; font-size: 1.1rem; margin-bottom: 20px; }
+        .hero-content h1 { font-size: 4rem; font-weight: 700; line-height: 1.1; color: #fff; }
+        .hero-content h2 { font-size: 3rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 20px; }
+        .hero-content p { max-width: 540px; color: var(--text-secondary); margin-bottom: 50px; font-size: 1.1rem; }
+        
+        .btn-hero {
+            padding: 15px 30px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .btn-hero:hover { background: rgba(100, 255, 218, 0.1); }
+
+        /* --- Section Styling --- */
+        section { padding: 100px 0; }
+
+        /* --- Experience (Timeline) --- */
+        .timeline-container {
+            border-left: 2px solid var(--text-secondary);
+            padding-left: 30px;
+            position: relative;
+        }
+        .job-card {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .job-card::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .job-header h3 { font-size: 1.3rem; color: #fff; }
+        .job-header span { color: var(--primary); font-family: monospace; font-size: 0.9rem; }
+        .job-desc { margin-top: 15px; color: var(--text-secondary); font-size: 0.95rem; }
+        .job-desc li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .job-desc li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); }
+
+        /* --- Projects (Grid) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 5px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+        .project-card:hover { transform: translateY(-10px); }
+        .folder-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .project-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+        .project-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; font-family: monospace; font-size: 0.8rem; color: var(--text-secondary); }
+        .project-links { margin-top: 20px; display: flex; gap: 15px; }
+        .project-links a:hover { color: var(--primary); }
+
+        /* --- Skills --- */
+        .skills-wrapper { display: flex; flex-wrap: wrap; gap: 40px; }
+        .skill-col { flex: 1; min-width: 250px; }
+        .skill-col h4 { margin-bottom: 20px; color: #fff; border-bottom: 1px solid var(--text-secondary); padding-bottom: 10px; display: inline-block;}
+        .skill-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--text-secondary); }
+        .skill-list i { color: var(--primary); font-size: 0.8rem; }
+
+        /* --- Education --- */
+        .edu-card {
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .edu-info h4 { color: #fff; }
+        .edu-info p { color: var(--text-secondary); font-size: 0.9rem; }
+        .edu-date { font-family: monospace; color: var(--primary); }
+
+        /* --- Contact --- */
+        .contact-box {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .social-icons a { font-size: 1.8rem; color: var(--text-secondary); }
+        .social-icons a:hover { color: var(--primary); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content h2 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .edu-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="logo">Het Patel</div>
-      <nav>
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+    <nav>
+        <div class="logo">Het.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-photo" id="photoWrap">
-        <img src="assets/profile.jpg" alt="Het Patel" id="profileImg" />
-      </div>
-
-      <div class="hero-copy">
-        <h1 class="reveal">Hi — I'm <span class="accent">Het Patel</span></h1>
-        <p class="lead reveal delay-1">
-          Computer Science 
-        </p>
-        <div class="hero-cta reveal delay-2">
-          <a class="btn" href="#projects">See Projects</a>
-          <a class="btn ghost" href="#publications">Publications</a>
+    <section id="hero">
+        <div class="container hero-content">
+            <h5 data-aos="fade-down" data-aos-duration="1000">Hi, my name is</h5>
+            <h1 data-aos="fade-up" data-aos-delay="200">Het Patel.</h1>
+            <h2 data-aos="fade-up" data-aos-delay="300">I build scalable systems & data solutions.</h2>
+            <p data-aos="fade-up" data-aos-delay="400">
+                I am a Master's student in Computer Science at NJIT with a focus on Big Data, AI, and Cloud Computing. 
+                I specialize in turning complex data into actionable insights and efficient software.
+            </p>
+            <a href="hp_Resume.pdf" target="_blank" class="btn-hero" data-aos="fade-up" data-aos-delay="500">Check out my Resume!</a>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Education</h2>
-
-      <div class="edu-grid">
-        <article class="edu-card reveal delay-1">
-          <div class="edu-head">
-            <h3>NJIT — New Jersey Institute of Technology</h3>
-            <span class="duration">Sept 2025 — Present</span>
-          </div>
-          <p class="degree">M.S. in Computer Science ongoing</p>
-          <p class="muted">Coursework — <strong>Currently studying</strong>:</p>
-          <ul>
-            <li>Data Management System Design</li>
-            <li>Operating System Desing</li>
-            <li>Introduction to Big Data</li>
-            <li>Artificial Intelligence (Spring 2026) </li>
-            <li>Cloud Computing (Spring 2026)</li>
-            <li>Data Structures and Algorithms (Spring 2026)</li>
-          </ul>
-          <p class="muted"><strong>Notes:</strong> Enrolled Fall 2025.</p>
-        </article>
-
-        <article class="edu-card reveal delay-2">
-          <div class="edu-head">
-            <h3>Dharmsinh Desai University</h3>
-            <span class="duration">Completed — May 2024</span>
-          </div>
-          <p class="degree">B.Tech — Information Technology</p>
-          <p class="muted">Coursework — <strong>Previously completed</strong>:</p>
-          <ul>
-            <li>Data Analysis & Information Extraction</li>
-            <li>Software Engineering</li>
-            <li>Distributed Computing</li>
-            <li>Knowlegde Systems</li>
-            <li>Web Technology</li>
-            <li>Advanced Java Technology</li>
-            <li>Database Management System</li>
-            <li>Design and Analysis of Algorithms</li>
-            <li>Design Patterns & Applied Frameworks
-            </li>
-          </ul>
-          <p class="muted"><strong>Percentage:</strong> 75%</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Projects</h2>
-
-      <div class="project-wrap">
-        <div class="project-list">
-          <!-- Project 1 -->
-          <article class="project-card reveal delay-1">
-            <h3>Resume Sorting App</h3>
-            <p class="meta">Organization: Internship — NLTK / PyPDF</p>
-            <h4>What we achieved</h4>
-            <ul>
-              <li>Automated extraction & ranking of keywords from resumes.</li>
-              <li>Improved candidate shortlisting speed and relevancy scoring.</li>
-            </ul>
-            <p class="muted">Link: <a href="https://github.com/hetpatel" target="_blank">Repository</a></p>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card reveal delay-2">
-            <h3>Sustainable Crop Residue Management</h3>
-            <p class="meta">Research: JSC Global — Prototype + Simulation</p>
-            <h4>What we achieved</h4>
-            <ul>
-              <li>Designed a marketplace-style mediation model connecting farmers and industries.</li>
-              <li>Simulated distributed warehousing and auctioning to reduce stubble burning.</li>
-            </ul>
-            <p class="muted">Link: <a href="#publications">Publication</a></p>
-          </article>
-        </div>
-
-        <!-- Slider / rectangular sliding window -->
-        <aside class="slider reveal delay-3" aria-label="Project outputs">
-          <div class="viewport">
-            <div class="track" id="track">
-              <figure class="slide"><img src="assets/project1-output.jpg" alt="Output 1"></figure>
-              <figure class="slide"><img src="assets/project2-output.jpg" alt="Output 2"></figure>
-              <figure class="slide"><img src="assets/project3-output.jpg" alt="Output 3"></figure>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">About Me</h2>
+            <div data-aos="fade-up">
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                    I recently graduated with a Bachelor's in Information Technology and am currently pursuing my 
+                    <span class="highlight">Master's in Computer Science at NJIT</span>. My journey started with software development
+                    and has evolved into a passion for handling large-scale data systems and AI models.
+                </p>
+                
+                <div class="edu-card">
+                    <div class="edu-info">
+                        <h4>New Jersey Institute of Technology</h4>
+                        <p>Master's in Computer Science | Newark, NJ</p>
+                        <p style="font-size: 0.85rem; margin-top: 5px;"><i>AI, Big Data, Cloud Computing, DB System Design</i></p>
+                    </div>
+                    <div class="edu-date">2025 - 2027</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-info">
+                        <h4>Dharmsinh Desai University</h4>
+                        <p>Bachelor's in Information Technology | Nadiad, India</p>
+                    </div>
+                    <div class="edu-date">2020 - 2024</div>
+                </div>
             </div>
-          </div>
-          <div class="controls">
-            <button id="prev" aria-label="Previous">◀</button>
-            <button id="next" aria-label="Next">▶</button>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Publications & Certifications</h2>
-
-      <div class="pub-grid">
-        <div class="pub-card reveal delay-1">
-          <img src="assets/certification.jpg" alt="Certification">
-          <div class="pub-body">
-            <h3>Sustainable Crop Residue Management Through Digital Mediation</h3>
-            <p class="muted">Journal of Scientific Computing — Vol 14</p>
-            <p><strong>What we achieved:</strong></p>
-            <ul>
-              <li>Proposed a practical digital bridge between farmers and companies to reuse residues.</li>
-              <li>Model reduced burning events in simulations through local warehousing and auctions.</li>
-            </ul>
-            <p class="muted">Read: <a href="https://example.com/research-paper" target="_blank">Research paper link</a></p>
-          </div>
+            
+            <br><br>
+            <h3 style="color: #fff; margin-bottom: 20px;" data-aos="fade-up">Technical Skills</h3>
+            <div class="skills-wrapper" data-aos="fade-up">
+                <div class="skill-col">
+                    <h4>Languages</h4>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-caret-right"></i> Java & Python</li>
+                        <li><i class="fas fa-caret-right"></i> SQL (MySQL)</li>
+                        <li><i class="fas fa-caret-right"></i> JavaScript (ES6+)</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <h4>Cloud & Big Data</h4>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-caret-right"></i> AWS (EC2)</li>
+                        <li><i class="fas fa-caret-right"></i> Hadoop & Hive</li>
+                        <li><i class="fas fa-caret-right"></i> Google Earth Engine</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <h4>Frameworks & Tools</h4>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-caret-right"></i> React & Node.js</li>
+                        <li><i class="fas fa-caret-right"></i> Power Platform</li>
+                        <li><i class="fas fa-caret-right"></i> Git & Pandas</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="certs reveal delay-2">
-          <h4>Certificates</h4>
-          <div class="cert-row">
-            <img src="Isro AI Certificate.pdf" alt="Cert1">
-            <img src="Research paper certificate.pdf" alt="Cert2">
-            <img src="assets/cert3.jpg" alt="Cert3">
-          </div>
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">Where I've Worked</h2>
+            
+            <div class="timeline-container">
+                
+                <div class="job-card" data-aos="fade-up">
+                    <div class="job-header">
+                        <h3>Undergraduate Researcher</h3>
+                        <span>Dharmsinh Desai University | Jun 2024 - Jan 2025</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Engineered a Digital Supply Chain Optimization Model managing 7-10 tons of crop residue/hectare. [cite: 17]</li>
+                        <li>Quantified environmental impact, projecting valorized biomass could generate 2,500+ GW of sustainable electricity. [cite: 17]</li>
+                        <li>Targeted air pollution reduction in the Delhi-NCR region through digital mediation. [cite: 17]</li>
+                    </ul>
+                </div>
+
+                <div class="job-card" data-aos="fade-up">
+                    <div class="job-header">
+                        <h3>Software Developer Intern</h3>
+                        <span>Dhyey Consulting | Dec 2023 - Apr 2024</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Built a Power Apps solution integrated with Dynamics 365, increasing inventory counting efficiency by 30%. </li>
+                        <li>Configured Power Automate flows to fetch data from APIs, reducing manual data handling by 40%. [cite: 22]</li>
+                        <li>Deployed Power BI dashboards for real-time warehouse metrics. [cite: 22]</li>
+                    </ul>
+                </div>
+
+                <div class="job-card" data-aos="fade-up">
+                    <div class="job-header">
+                        <h3>Artificial Intelligence Intern</h3>
+                        <span>Future Netwings | Jul 2023 - Aug 2023</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Conducted EDA on the Titanic dataset using Pandas, Matplotlib, and Seaborn. [cite: 26]</li>
+                        <li>Developed a laptop price prediction model using KNN with 25% accuracy improvement via feature optimization. [cite: 26]</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Contact</h2>
-      <p class="muted reveal delay-1">Email: <a href="mailto:hetpatel@example.com">patelhet583@gmail.com</a></p>
-      <p class="muted reveal delay-2">Mobile No: +1(862)380-4407</p>
-    </div>
-  </section>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
+            <div class="project-grid">
 
-  <footer class="footer">
-    <div class="container">
-      <small>© 2025 Het Patel </small>
-    </div>
-  </footer>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Big Data Flight Analysis</h3>
+                    <p>Architected a 7-node Hadoop cluster on AWS EC2 to analyze 120M+ flight records. Engineered Bash pipelines for ETL and achieved 40% execution time reduction. [cite: 28, 30, 32]</p>
+                    <div class="tech-stack">
+                        <span>AWS EC2</span><span>Hadoop</span><span>MapReduce</span><span>Java</span>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Python Resume Parser</h3>
+                    <p>Automated parsing of bulk PDFs using PyPDF2 and NLP tokenization. Implemented keyword-matching logic to simulate ATS filtering for skills. [cite: 33, 35]</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span>NLTK</span><span>PyPDF2</span><span>Keras</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Agro-Waste Management Sys.</h3>
+                    <p>Built a React dashboard for farmer-authority interaction. Implemented automated auction handling in Node.js for real-time bidding. [cite: 41, 43]</p>
+                    <div class="tech-stack">
+                        <span>MongoDB</span><span>React</span><span>Node.js</span><span>Express</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="folder-icon"><i class="far fa-folder"></i></div>
+                    <h3>Language Translator</h3>
+                    <p>Developed a compiler front-end with Lex (DFA) & YACC (Syntax Analysis) supporting grammar rules and token generation. [cite: 37, 39, 40]</p>
+                    <div class="tech-stack">
+                        <span>Lex</span><span>YACC</span><span>C</span><span>DFA</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container" data-aos="zoom-in">
+            <div class="contact-box">
+                <h5 class="highlight">What's Next?</h5>
+                <h2 style="font-size: 3rem; color: #fff; margin-bottom: 20px;">Get In Touch</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 40px;">
+                    I am currently looking for full-time opportunities or internships in Software Engineering and Data Science. 
+                    Whether you have a question or just want to say hi, my inbox is always open!
+                </p>
+                <a href="mailto:patelhet583@gmail.com" class="btn-hero" style="font-size: 1.1rem; padding: 20px 40px;">Say Hello</a>
+
+                <div class="social-icons">
+                    <a href="https://github.com/het1143" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/hetpatel1143" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:patelhet583@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; color: var(--text-secondary); font-size: 0.8rem;">
+        <p>Built by Het Patel</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
 </body>
 </html>
