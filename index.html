@@ -1,403 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Het Patel | CS Master's Student & Software Developer</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --bg-color: #0b0d17;
-            --card-bg: #15192b;
-            --primary: #64ffda; /* Neon Mint/Teal */
-            --text-main: #ccd6f6;
-            --text-secondary: #8892b0;
-            --transition: all 0.3s ease-in-out;
-        }
+<title>Het Patel | Software Engineer & Data Engineer (NJIT)</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+<!-- SEO -->
+<meta name="description" content="Het Patel – CS Master's student at NJIT specializing in Software Engineering, Data Engineering, Big Data, and Cloud Computing. Experienced with Java, Python, Hadoop, and AWS.">
+<meta name="keywords" content="Het Patel, Software Engineer, Data Engineer, NJIT, Big Data, Hadoop, AWS, Java, Python">
+<meta name="author" content="Het Patel">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://het1143.github.io/hetpatel.github.io/">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+<!-- Open Graph -->
+<meta property="og:title" content="Het Patel | Software Engineer & Data Engineer">
+<meta property="og:description" content="Building scalable systems, big data pipelines, and cloud-native software.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://het1143.github.io/hetpatel.github.io/">
 
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* --- Animations & Utilities --- */
-        .highlight { color: var(--primary); }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-        .section-title::after {
-            content: "";
-            display: block;
-            height: 1px;
-            width: 300px;
-            background-color: var(--text-secondary);
-            margin-left: 20px;
-            opacity: 0.5;
-        }
+<!-- Icons & AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 25px;
-        }
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Person",
+ "name":"Het Patel",
+ "url":"https://het1143.github.io/hetpatel.github.io/",
+ "jobTitle":"Software Engineer / Data Engineer",
+ "sameAs":[
+   "https://github.com/het1143",
+   "https://linkedin.com/in/hetpatel1143"
+ ]
+}
+</script>
 
-        /* --- Navbar --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            position: fixed;
-            width: 100%;
-            background: rgba(11, 13, 23, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            top: 0;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        .nav-links { display: flex; gap: 30px; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--primary); transform: translateY(-2px); }
+<style>
+:root{
+--bg:#0b0d17;
+--card:#15192b;
+--primary:#64ffda;
+--text:#ccd6f6;
+--muted:#8892b0;
+--transition:all .3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+ul{list-style:none}
+.container{max-width:1100px;margin:auto;padding:0 25px}
+section{padding:100px 0}
+.highlight{color:var(--primary)}
 
-        /* --- Hero Section --- */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 80px;
-        }
-        .hero-content h5 { color: var(--primary); font-family: monospace; font-size: 1.1rem; margin-bottom: 20px; }
-        .hero-content h1 { font-size: 4rem; font-weight: 700; line-height: 1.1; color: #fff; }
-        .hero-content h2 { font-size: 3rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 20px; }
-        .hero-content p { max-width: 540px; color: var(--text-secondary); margin-bottom: 50px; font-size: 1.1rem; }
-        
-        .btn-hero {
-            padding: 15px 30px;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            border-radius: 4px;
-            font-family: monospace;
-        }
-        .btn-hero:hover { background: rgba(100, 255, 218, 0.1); }
+nav{
+position:fixed;top:0;width:100%;
+padding:20px 50px;
+display:flex;justify-content:space-between;
+background:rgba(11,13,23,.9);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+.logo{font-size:1.5rem;font-weight:700;color:var(--primary)}
+.nav-links{display:flex;gap:30px;font-size:.9rem}
+.nav-links a:hover{color:var(--primary);transform:translateY(-2px)}
 
-        /* --- Section Styling --- */
-        section { padding: 100px 0; }
+.section-title{
+font-size:2rem;margin-bottom:3rem;
+display:flex;align-items:center
+}
+.section-title::after{
+content:"";height:1px;width:300px;
+background:var(--muted);
+margin-left:20px;opacity:.5
+}
 
-        /* --- Experience (Timeline) --- */
-        .timeline-container {
-            border-left: 2px solid var(--text-secondary);
-            padding-left: 30px;
-            position: relative;
-        }
-        .job-card {
-            margin-bottom: 50px;
-            position: relative;
-        }
-        .job-card::before {
-            content: '';
-            position: absolute;
-            left: -37px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-        .job-header h3 { font-size: 1.3rem; color: #fff; }
-        .job-header span { color: var(--primary); font-family: monospace; font-size: 0.9rem; }
-        .job-desc { margin-top: 15px; color: var(--text-secondary); font-size: 0.95rem; }
-        .job-desc li { margin-bottom: 8px; position: relative; padding-left: 20px; }
-        .job-desc li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); }
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
+.hero-content h5{color:var(--primary);font-family:monospace;margin-bottom:20px}
+.hero-content h1{font-size:4rem;color:#fff}
+.hero-content h2{font-size:3rem;color:var(--muted);margin-bottom:20px}
+.hero-content p{max-width:540px;color:var(--muted);font-size:1.1rem;margin-bottom:50px}
+.btn-hero{
+padding:15px 30px;
+border:1px solid var(--primary);
+color:var(--primary);
+border-radius:4px;
+font-family:monospace
+}
+.btn-hero:hover{background:rgba(100,255,218,.1)}
 
-        /* --- Projects (Grid) --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 5px;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
-        }
-        .project-card:hover { transform: translateY(-10px); }
-        .folder-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .project-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
-        .project-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; }
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; font-family: monospace; font-size: 0.8rem; color: var(--text-secondary); }
-        .project-links { margin-top: 20px; display: flex; gap: 15px; }
-        .project-links a:hover { color: var(--primary); }
+/* EXPERIENCE */
+.timeline-container{border-left:2px solid var(--muted);padding-left:30px}
+.job-card{margin-bottom:50px;position:relative}
+.job-card::before{
+content:"";position:absolute;
+left:-37px;top:5px;
+width:12px;height:12px;
+background:var(--primary);
+border-radius:50%
+}
+.job-header h3{color:#fff}
+.job-header span{color:var(--primary);font-family:monospace;font-size:.9rem}
+.job-desc{margin-top:15px;color:var(--muted)}
+.job-desc li{margin-bottom:8px;padding-left:20px;position:relative}
+.job-desc li::before{content:"▹";position:absolute;left:0;color:var(--primary)}
 
-        /* --- Skills --- */
-        .skills-wrapper { display: flex; flex-wrap: wrap; gap: 40px; }
-        .skill-col { flex: 1; min-width: 250px; }
-        .skill-col h4 { margin-bottom: 20px; color: #fff; border-bottom: 1px solid var(--text-secondary); padding-bottom: 10px; display: inline-block;}
-        .skill-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--text-secondary); }
-        .skill-list i { color: var(--primary); font-size: 0.8rem; }
+/* PROJECTS */
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px
+}
+.project-card{
+background:var(--card);
+padding:30px;
+border-radius:5px;
+transition:var(--transition)
+}
+.project-card:hover{transform:translateY(-10px)}
+.folder-icon{font-size:2.5rem;color:var(--primary);margin-bottom:20px}
+.tech-stack{
+display:flex;flex-wrap:wrap;
+gap:10px;
+font-family:monospace;
+font-size:.8rem;
+color:var(--muted)
+}
 
-        /* --- Education --- */
-        .edu-card {
-            background: var(--card-bg);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .edu-info h4 { color: #fff; }
-        .edu-info p { color: var(--text-secondary); font-size: 0.9rem; }
-        .edu-date { font-family: monospace; color: var(--primary); }
+/* SKILLS */
+.skills-wrapper{display:flex;flex-wrap:wrap;gap:40px}
+.skill-col{flex:1;min-width:250px}
+.skill-col h4{
+color:#fff;
+margin-bottom:15px;
+border-bottom:1px solid var(--muted);
+padding-bottom:10px
+}
+.skill-list li{margin-bottom:10px;color:var(--muted)}
 
-        /* --- Contact --- */
-        .contact-box {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .social-icons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-        .social-icons a { font-size: 1.8rem; color: var(--text-secondary); }
-        .social-icons a:hover { color: var(--primary); }
+/* EDUCATION */
+.edu-card{
+background:var(--card);
+padding:20px;
+border-radius:5px;
+display:flex;
+justify-content:space-between;
+margin-bottom:20px
+}
+.edu-date{font-family:monospace;color:var(--primary)}
 
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3rem; }
-            .hero-content h2 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplified for mobile */
-            .edu-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-        }
-    </style>
+/* CONTACT */
+.contact-box{text-align:center;max-width:600px;margin:auto}
+.social-icons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:30px
+}
+.social-icons a{font-size:1.8rem;color:var(--muted)}
+.social-icons a:hover{color:var(--primary)}
+
+footer{text-align:center;padding:20px;color:var(--muted);font-size:.8rem}
+
+@media(max-width:768px){
+.hero-content h1{font-size:3rem}
+.hero-content h2{font-size:2rem}
+.nav-links{display:none}
+.edu-card{flex-direction:column;gap:10px}
+}
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo">Het.</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+<div class="logo">Het.</div>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Work</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <section id="hero">
-        <div class="container hero-content">
-            <h5 data-aos="fade-down" data-aos-duration="1000">Hi, my name is</h5>
-            <h1 data-aos="fade-up" data-aos-delay="200">Het Patel.</h1>
-            <h2 data-aos="fade-up" data-aos-delay="300">I build scalable systems & data solutions.</h2>
-            <p data-aos="fade-up" data-aos-delay="400">
-                I am a Master's student in Computer Science at NJIT with a focus on Big Data, AI, and Cloud Computing. 
-                I specialize in turning complex data into actionable insights and efficient software.
-            </p>
-            <a href="hp_Resume.pdf" target="_blank" class="btn-hero" data-aos="fade-up" data-aos-delay="500">Check out my Resume!</a>
-        </div>
-    </section>
+<section id="hero">
+<div class="container hero-content">
+<h5 data-aos="fade-down">Hi, my name is</h5>
+<h1 data-aos="fade-up" data-aos-delay="200">Het Patel.</h1>
+<h2 data-aos="fade-up" data-aos-delay="300">I build scalable systems & data solutions.</h2>
+<p data-aos="fade-up" data-aos-delay="400">
+CS Master's student at NJIT focused on Software Engineering, Big Data, and Cloud Computing.
+</p>
+<a href="hp_Resume.pdf" target="_blank" class="btn-hero" data-aos="fade-up" data-aos-delay="500">
+Check out my Resume!
+</a>
+</div>
+</section>
 
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-right">About Me</h2>
-            <div data-aos="fade-up">
-                <p style="color: var(--text-secondary); margin-bottom: 30px;">
-                    I recently graduated with a Bachelor's in Information Technology and am currently pursuing my 
-                    <span class="highlight">Master's in Computer Science at NJIT</span>. My journey started with software development
-                    and has evolved into a passion for handling large-scale data systems and AI models.
-                </p>
-                
-                <div class="edu-card">
-                    <div class="edu-info">
-                        <h4>New Jersey Institute of Technology</h4>
-                        <p>Master's in Computer Science | Newark, NJ</p>
-                        <p style="font-size: 0.85rem; margin-top: 5px;"><i>AI, Big Data, Cloud Computing, DB System Design</i></p>
-                    </div>
-                    <div class="edu-date">2025 - 2027</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-info">
-                        <h4>Dharmsinh Desai University</h4>
-                        <p>Bachelor's in Information Technology | Nadiad, India</p>
-                    </div>
-                    <div class="edu-date">2020 - 2024</div>
-                </div>
-            </div>
-            
-            <br><br>
-            <h3 style="color: #fff; margin-bottom: 20px;" data-aos="fade-up">Technical Skills</h3>
-            <div class="skills-wrapper" data-aos="fade-up">
-                <div class="skill-col">
-                    <h4>Languages</h4>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-caret-right"></i> Java & Python</li>
-                        <li><i class="fas fa-caret-right"></i> SQL (MySQL)</li>
-                        <li><i class="fas fa-caret-right"></i> JavaScript (ES6+)</li>
-                    </ul>
-                </div>
-                <div class="skill-col">
-                    <h4>Cloud & Big Data</h4>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-caret-right"></i> AWS (EC2)</li>
-                        <li><i class="fas fa-caret-right"></i> Hadoop & Hive</li>
-                        <li><i class="fas fa-caret-right"></i> Google Earth Engine</li>
-                    </ul>
-                </div>
-                <div class="skill-col">
-                    <h4>Frameworks & Tools</h4>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-caret-right"></i> React & Node.js</li>
-                        <li><i class="fas fa-caret-right"></i> Power Platform</li>
-                        <li><i class="fas fa-caret-right"></i> Git & Pandas</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="about">
+<div class="container">
+<h2 class="section-title" data-aos="fade-right">About Me</h2>
+<p data-aos="fade-up" style="color:var(--muted);margin-bottom:30px">
+Master’s student in Computer Science at <span class="highlight">NJIT</span> with strong foundations
+in software development, distributed systems, and data engineering.
+</p>
 
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-right">Where I've Worked</h2>
-            
-            <div class="timeline-container">
-                
-                <div class="job-card" data-aos="fade-up">
-                    <div class="job-header">
-                        <h3>Undergraduate Researcher</h3>
-                        <span>Dharmsinh Desai University | Jun 2024 - Jan 2025</span>
-                    </div>
-                    <ul class="job-desc">
-                        <li>Engineered a Digital Supply Chain Optimization Model managing 7-10 tons of crop residue/hectare. [cite: 17]</li>
-                        <li>Quantified environmental impact, projecting valorized biomass could generate 2,500+ GW of sustainable electricity. [cite: 17]</li>
-                        <li>Targeted air pollution reduction in the Delhi-NCR region through digital mediation. [cite: 17]</li>
-                    </ul>
-                </div>
+<div class="edu-card" data-aos="fade-up">
+<div>
+<h4>New Jersey Institute of Technology</h4>
+<p>MS in Computer Science</p>
+</div>
+<div class="edu-date">2025 – 2027</div>
+</div>
 
-                <div class="job-card" data-aos="fade-up">
-                    <div class="job-header">
-                        <h3>Software Developer Intern</h3>
-                        <span>Dhyey Consulting | Dec 2023 - Apr 2024</span>
-                    </div>
-                    <ul class="job-desc">
-                        <li>Built a Power Apps solution integrated with Dynamics 365, increasing inventory counting efficiency by 30%. </li>
-                        <li>Configured Power Automate flows to fetch data from APIs, reducing manual data handling by 40%. [cite: 22]</li>
-                        <li>Deployed Power BI dashboards for real-time warehouse metrics. [cite: 22]</li>
-                    </ul>
-                </div>
+<div class="edu-card" data-aos="fade-up">
+<div>
+<h4>Dharmsinh Desai University</h4>
+<p>B.Tech in Information Technology</p>
+</div>
+<div class="edu-date">2020 – 2024</div>
+</div>
 
-                <div class="job-card" data-aos="fade-up">
-                    <div class="job-header">
-                        <h3>Artificial Intelligence Intern</h3>
-                        <span>Future Netwings | Jul 2023 - Aug 2023</span>
-                    </div>
-                    <ul class="job-desc">
-                        <li>Conducted EDA on the Titanic dataset using Pandas, Matplotlib, and Seaborn. [cite: 26]</li>
-                        <li>Developed a laptop price prediction model using KNN with 25% accuracy improvement via feature optimization. [cite: 26]</li>
-                    </ul>
-                </div>
+<h3 style="color:#fff;margin:40px 0 20px" data-aos="fade-up">Technical Skills</h3>
 
-            </div>
-        </div>
-    </section>
+<div class="skills-wrapper" data-aos="fade-up">
+<div class="skill-col">
+<h4>Languages</h4>
+<ul class="skill-list">
+<li>Java, Python</li>
+<li>SQL, JavaScript</li>
+</ul>
+</div>
+<div class="skill-col">
+<h4>Cloud & Big Data</h4>
+<ul class="skill-list">
+<li>AWS EC2</li>
+<li>Hadoop, Hive</li>
+</ul>
+</div>
+<div class="skill-col">
+<h4>Frameworks & Tools</h4>
+<ul class="skill-list">
+<li>React, Node.js</li>
+<li>Git, Pandas</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
-            <div class="project-grid">
+<section id="experience">
+<div class="container">
+<h2 class="section-title" data-aos="fade-right">Where I've Worked</h2>
+<div class="timeline-container">
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="folder-icon"><i class="far fa-folder"></i></div>
-                    <h3>Big Data Flight Analysis</h3>
-                    <p>Architected a 7-node Hadoop cluster on AWS EC2 to analyze 120M+ flight records. Engineered Bash pipelines for ETL and achieved 40% execution time reduction. [cite: 28, 30, 32]</p>
-                    <div class="tech-stack">
-                        <span>AWS EC2</span><span>Hadoop</span><span>MapReduce</span><span>Java</span>
-                    </div>
-                </div>
+<div class="job-card" data-aos="fade-up">
+<div class="job-header">
+<h3>Undergraduate Researcher</h3>
+<span>Dharmsinh Desai University</span>
+</div>
+<ul class="job-desc">
+<li>Designed digital supply-chain model for agro-waste management.</li>
+<li>Focused on sustainability and scalable data mediation.</li>
+</ul>
+</div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="folder-icon"><i class="far fa-folder"></i></div>
-                    <h3>Python Resume Parser</h3>
-                    <p>Automated parsing of bulk PDFs using PyPDF2 and NLP tokenization. Implemented keyword-matching logic to simulate ATS filtering for skills. [cite: 33, 35]</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>NLTK</span><span>PyPDF2</span><span>Keras</span>
-                    </div>
-                </div>
+<div class="job-card" data-aos="fade-up">
+<div class="job-header">
+<h3>Software Developer Intern</h3>
+<span>Dhyey Consulting</span>
+</div>
+<ul class="job-desc">
+<li>Built Power Apps & automated workflows.</li>
+<li>Improved operational efficiency by 30%.</li>
+</ul>
+</div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="folder-icon"><i class="far fa-folder"></i></div>
-                    <h3>Agro-Waste Management Sys.</h3>
-                    <p>Built a React dashboard for farmer-authority interaction. Implemented automated auction handling in Node.js for real-time bidding. [cite: 41, 43]</p>
-                    <div class="tech-stack">
-                        <span>MongoDB</span><span>React</span><span>Node.js</span><span>Express</span>
-                    </div>
-                </div>
+</div>
+</div>
+</section>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="folder-icon"><i class="far fa-folder"></i></div>
-                    <h3>Language Translator</h3>
-                    <p>Developed a compiler front-end with Lex (DFA) & YACC (Syntax Analysis) supporting grammar rules and token generation. [cite: 37, 39, 40]</p>
-                    <div class="tech-stack">
-                        <span>Lex</span><span>YACC</span><span>C</span><span>DFA</span>
-                    </div>
-                </div>
+<section id="projects">
+<div class="container">
+<h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
+<div class="project-grid">
 
-            </div>
-        </div>
-    </section>
+<div class="project-card" data-aos="fade-up">
+<div class="folder-icon"><i class="far fa-folder"></i></div>
+<h3>Big Data Flight Analysis</h3>
+<p>Processed 120M+ flight records on Hadoop cluster deployed on AWS EC2.</p>
+<div class="tech-stack"><span>AWS</span><span>Hadoop</span><span>Java</span></div>
+</div>
 
-    <section id="contact">
-        <div class="container" data-aos="zoom-in">
-            <div class="contact-box">
-                <h5 class="highlight">What's Next?</h5>
-                <h2 style="font-size: 3rem; color: #fff; margin-bottom: 20px;">Get In Touch</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 40px;">
-                    I am currently looking for full-time opportunities or internships in Software Engineering and Data Science. 
-                    Whether you have a question or just want to say hi, my inbox is always open!
-                </p>
-                <a href="mailto:patelhet583@gmail.com" class="btn-hero" style="font-size: 1.1rem; padding: 20px 40px;">Say Hello</a>
+<div class="project-card" data-aos="fade-up" data-aos-delay="150">
+<div class="folder-icon"><i class="far fa-folder"></i></div>
+<h3>Python Resume Parser</h3>
+<p>Automated resume screening using NLP and PDF parsing.</p>
+<div class="tech-stack"><span>Python</span><span>NLTK</span><span>PyPDF</span></div>
+</div>
 
-                <div class="social-icons">
-                    <a href="https://github.com/het1143" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/hetpatel1143" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:patelhet583@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</section>
 
-    <footer style="text-align: center; padding: 20px; color: var(--text-secondary); font-size: 0.8rem;">
-        <p>Built by Het Patel</p>
-    </footer>
+<section id="contact">
+<div class="container" data-aos="zoom-in">
+<div class="contact-box">
+<h5 class="highlight">What's Next?</h5>
+<h2 style="font-size:3rem;color:#fff;margin-bottom:20px">Get In Touch</h2>
+<p style="color:var(--muted);margin-bottom:40px">
+Looking for Software Engineer / Data Engineer roles.
+</p>
+<a href="mailto:patelhet583@gmail.com" class="btn-hero">Say Hello</a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-    </script>
+<div class="social-icons">
+<a href="https://github.com/het1143" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://linkedin.com/in/hetpatel1143" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="mailto:patelhet583@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>Built by Het Patel</p>
+</footer>
+
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer>
+AOS.init({duration:1000,once:true});
+</script>
+
 </body>
 </html>
