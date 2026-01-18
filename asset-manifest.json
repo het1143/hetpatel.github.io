@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/hetpatel.github.io/static/css/main.6b148655.css",
+    "main.js": "/hetpatel.github.io/static/js/main.e2d138a0.js",
+    "static/js/453.fbfbfbba.chunk.js": "/hetpatel.github.io/static/js/453.fbfbfbba.chunk.js",
+    "static/media/bg-light.jpg": "/hetpatel.github.io/static/media/bg-light.bac0efb485244a522981.jpg",
+    "static/media/bg-dark.jpg": "/hetpatel.github.io/static/media/bg-dark.f420c6b8458af72de935.jpg",
+    "static/media/headshot.png": "/hetpatel.github.io/static/media/headshot.2e15bef9b48220c1b0ab.png",
+    "static/media/Big_Data_Image.png": "/hetpatel.github.io/static/media/Big_Data_Image.3e216ce7cdef18603277.png",
+    "static/media/PhysucalInventoryCounting.png": "/hetpatel.github.io/static/media/PhysucalInventoryCounting.044fc18eea8f5d717243.png",
+    "static/media/LabManagement.png": "/hetpatel.github.io/static/media/LabManagement.a51d3e98fd1a44f159e4.png",
+    "static/media/ResumeParser.png": "/hetpatel.github.io/static/media/ResumeParser.5284f37fe04176e69e16.png",
+    "static/media/AgroWaste.png": "/hetpatel.github.io/static/media/AgroWaste.169a1743e2c529783c02.png",
+    "static/media/CropProductionAna.png": "/hetpatel.github.io/static/media/CropProductionAna.cc0000c7eda1c5b4b934.png",
+    "static/media/ElectricBill.png": "/hetpatel.github.io/static/media/ElectricBill.ea6bf08f3da49fcb82ee.png",
+    "static/media/LT.png": "/hetpatel.github.io/static/media/LT.d544dcf0d2428207f7c5.png",
+    "index.html": "/hetpatel.github.io/index.html",
+    "main.6b148655.css.map": "/hetpatel.github.io/static/css/main.6b148655.css.map",
+    "main.e2d138a0.js.map": "/hetpatel.github.io/static/js/main.e2d138a0.js.map",
+    "453.fbfbfbba.chunk.js.map": "/hetpatel.github.io/static/js/453.fbfbfbba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b148655.css",
+    "static/js/main.e2d138a0.js"
+  ]
+}
