@@ -64,7 +64,7 @@ const educationData = [
         location: "Newark, NJ",
         image: njitLogo, 
         grade: "Grade: 3.83/4",
-        desc: "Relevant coursework: Artificial Intelligence, Big Data, Database Management."
+        desc: "Relevant coursework: Artificial Intelligence,Cloud Computing, Big Data, Database Management."
     },
     {
         school: "Dharmsinh Desai University",
