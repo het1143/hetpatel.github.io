@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/hetpatel.github.io/static/css/main.6b148655.css",
-    "main.js": "/hetpatel.github.io/static/js/main.e2d138a0.js",
+    "main.css": "/hetpatel.github.io/static/css/main.9c46a9ba.css",
+    "main.js": "/hetpatel.github.io/static/js/main.b89530d5.js",
     "static/js/453.fbfbfbba.chunk.js": "/hetpatel.github.io/static/js/453.fbfbfbba.chunk.js",
     "static/media/bg-light.jpg": "/hetpatel.github.io/static/media/bg-light.bac0efb485244a522981.jpg",
     "static/media/bg-dark.jpg": "/hetpatel.github.io/static/media/bg-dark.f420c6b8458af72de935.jpg",
@@ -15,12 +15,12 @@
     "static/media/ElectricBill.png": "/hetpatel.github.io/static/media/ElectricBill.ea6bf08f3da49fcb82ee.png",
     "static/media/LT.png": "/hetpatel.github.io/static/media/LT.d544dcf0d2428207f7c5.png",
     "index.html": "/hetpatel.github.io/index.html",
-    "main.6b148655.css.map": "/hetpatel.github.io/static/css/main.6b148655.css.map",
-    "main.e2d138a0.js.map": "/hetpatel.github.io/static/js/main.e2d138a0.js.map",
+    "main.9c46a9ba.css.map": "/hetpatel.github.io/static/css/main.9c46a9ba.css.map",
+    "main.b89530d5.js.map": "/hetpatel.github.io/static/js/main.b89530d5.js.map",
     "453.fbfbfbba.chunk.js.map": "/hetpatel.github.io/static/js/453.fbfbfbba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b148655.css",
-    "static/js/main.e2d138a0.js"
+    "static/css/main.9c46a9ba.css",
+    "static/js/main.b89530d5.js"
   ]
 }
