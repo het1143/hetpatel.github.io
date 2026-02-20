@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import './App.css'; 
-import bgLight from "./assets/bg-light.jpg"; 
+import './App.css';
+import bgLight from "./assets/bg-light.jpg";
 import bgDark from "./assets/bg-dark.jpg";
-import dduLogo from "./assets/ddu_logo.png";   
-import njitLogo from "./assets/njit_logo.png"; 
+import dduLogo from "./assets/ddu_logo.png";
+import njitLogo from "./assets/njit_logo.png";
 
 // Icons & UI Components
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -13,6 +13,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import SendIcon from '@mui/icons-material/Send';
+import DownloadIcon from '@mui/icons-material/Download';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,16 +30,16 @@ import LT from "./assets/LT.png";
 
 // --- DATA ---
 const navigationLinks = [
-  ["Expertise", "expertise"],
-  ["History", "history"],
-  ["Projects", "projects"],
-  ["Contact", "contact"]
+    ["Expertise", "expertise"],
+    ["History", "history"],
+    ["Projects", "projects"],
+    ["Contact", "contact"]
 ];
 
 const expertiseData = [
     {
         title: "Full Stack & Software Engineering",
-        icon: faLaptopCode, 
+        icon: faLaptopCode,
         desc: "Building interactive dashboards and automating enterprise workflows. Experienced with front-end design and backend optimization.",
         stack: ["React", "Node.js", "Express.js", "MongoDB", "JavaScript", "HTML5", "CSS3", "Power Platform", "Git", "VS Code"]
     },
@@ -62,9 +63,9 @@ const educationData = [
         degree: "Master of Science in Computer Science",
         year: "Sep 2025 - May 2027",
         location: "Newark, NJ",
-        image: njitLogo, 
+        image: njitLogo,
         grade: "Grade: 3.83/4",
-        desc: "Relevant coursework: Artificial Intelligence, Big Data, Database Management."
+        desc: "Relevant coursework: Artificial Intelligence,Cloud Computing, Big Data, Database Management."
     },
     {
         school: "Dharmsinh Desai University",
@@ -72,7 +73,7 @@ const educationData = [
         year: "2020 - 2024",
         location: "Nadiad, Gujarat",
         image: dduLogo,
-        grade: "",
+        grade: "Grade: 8.0/10",
         desc: ""
     }
 ];
@@ -81,8 +82,15 @@ const historyData = [
     {
         title: "Undergraduate Research",
         subtitle: "Dharmsinh Desai University, Nadiad, India",
-        date: "June 2024 - Jan 2025",
+        date: "June 2024 - Feb 2025",
         desc: "Engineered a Digital Supply Chain Optimization Model and closed-loop framework (online auction) to manage crop residue. Quantified environmental impact, projecting 2,500+ GW of sustainable electricity generation annually.",
+        icon: faBriefcase
+    },
+    {
+        title: "Software Developer",
+        subtitle: "Dhyey Consulting, Vadodara, India",
+        date: "May 2024 - Dec 2024",
+        desc: "I contributed to business intelligence dashboards using Power BI, low-code applications with Microsoft Power Platform, and data processing and system integration tasks, collaborating with the team to deliver client-focused solutions.",
         icon: faBriefcase
     },
     {
@@ -145,8 +153,8 @@ const Navigation = ({ mode, setMode }) => {
         <div id="navigation" className={`navbar-fixed-top ${scrolled ? 'scrolled' : ''}`}>
             <div className="navigation-bar">
                 <div className="nav-left">
-                     {mode === 'dark' 
-                        ? <LightModeIcon className="mode-icon" onClick={() => setMode('light')} fontSize="large" /> 
+                    {mode === 'dark'
+                        ? <LightModeIcon className="mode-icon" onClick={() => setMode('light')} fontSize="large" />
                         : <DarkModeIcon className="mode-icon" onClick={() => setMode('dark')} fontSize="large" />
                     }
                 </div>
@@ -158,11 +166,20 @@ const Navigation = ({ mode, setMode }) => {
                     sx={{ display: { sm: 'none' } }}
                     className="mobile-menu-icon"
                 >
-                    <MenuIcon fontSize="large"/>
+                    <MenuIcon fontSize="large" />
                 </IconButton>
-                
+
                 <div className="nav-right">
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        <Button
+                            className="download-cv-btn"
+                            href="https://drive.google.com/drive/folders/1qxb1ayWn8qh83V9eOJX0wHwUouT5NGeP?usp=sharing"
+                            target="_blank"
+                            rel="noreferrer"
+                            startIcon={<DownloadIcon />}
+                        >
+                            Download CV
+                        </Button>
                         {navigationLinks.map(([label, id]) => (
                             <Button key={label} onClick={() => scrollToSection(id)} className="nav-link">
                                 {label}
@@ -171,7 +188,7 @@ const Navigation = ({ mode, setMode }) => {
                     </Box>
                 </div>
             </div>
-            
+
             <Drawer
                 variant="temporary"
                 open={mobileOpen}
@@ -203,27 +220,27 @@ const Intro = () => (
     </div>
 );
 
-// --- UPDATED ABOUT COMPONENT ---
+// --- ABOUT COMPONENT ---
 const About = () => (
     <div className="about-me-container" id="about">
         <div className="about-grid">
-            
+
             {/* Left Side: About Me Text */}
             <div className="about-text-column">
                 <h1>About Me</h1>
                 <p>
-                    I am a passionate software engineer with expertise in both full-stack development and AI/ML solutions. 
-                    With a strong foundation in designing and developing scalable, production-grade software systems, 
+                    I am a passionate software engineer with expertise in both full-stack development and AI/ML solutions.
+                    With a strong foundation in designing and developing scalable, production-grade software systems,
                     I excel in creating efficient and robust applications.
                 </p>
                 <p>
-                    In addition to my software engineering skills, I specialize in developing AI-driven solutions using 
-                    cutting-edge machine learning models and frameworks. My focus areas include building intelligent 
-                    systems for NLP, data processing, and predictive analysis, enabling businesses to derive actionable 
+                    In addition to my software engineering skills, I specialize in developing AI-driven solutions using
+                    cutting-edge machine learning models and frameworks. My focus areas include building intelligent
+                    systems for NLP, data processing, and predictive analysis, enabling businesses to derive actionable
                     insights from their data.
                 </p>
                 <p>
-                    My academic background has equipped me with strong problem-solving skills and a deep understanding of 
+                    My academic background has equipped me with strong problem-solving skills and a deep understanding of
                     algorithms, data structures, and system architecture, which I apply to solve real-world challenges.
                 </p>
             </div>
@@ -304,7 +321,7 @@ const Projects = () => (
         <h1>Personal Projects</h1>
         <div className="projects-grid">
 
-           <div className="project">
+            <div className="project">
                 <a href="https://github.com/het1143/Big-Data-Flight-Analysis" target="_blank" rel="noreferrer">
                     <img src={BigData} className="zoom" alt="Big Data Flight Analysis" width="100%" />
                 </a>
@@ -312,7 +329,7 @@ const Projects = () => (
                 <p>Deployed a 7-node Hadoop cluster on AWS EC2 to analyze 120M+ flight records using optimized MapReduce algorithms.</p>
             </div>
 
-           <div className="project">
+            <div className="project">
                 <a href="https://github.com/het1143/Research-Lab-Management-System-Data-Management-System-Design-." target="_blank" rel="noreferrer">
                     <img src={LabManagement} className="zoom" alt="Research Lab Management" width="100%" />
                 </a>
@@ -320,7 +337,7 @@ const Projects = () => (
                 <p>Built a relational database system using Python and SQLite to streamline the management of lab resources and grants, featuring interactive dashboards for real-time analytics and performance tracking.</p>
             </div>
 
-           <div className="project">
+            <div className="project">
                 <a href="https://github.com/het1143/Crop-Production-Analysis" target="_blank" rel="noreferrer">
                     <img src={CropProductionAna} className="zoom" alt="Crop-Production-Analysis" width="100%" />
                 </a>
@@ -343,7 +360,7 @@ const Projects = () => (
                 <h2>Python Resume Parser</h2>
                 <p>Automated the parsing of bulk PDFs using NLP and tokenization to extract structured resume data, implementing a custom ATS simulation to filter candidates based on technical keywords.</p>
             </div>
-            
+
             <div className="project">
                 <a href="https://github.com/jenish3000/SDP_AGROWASTE" target="_blank" rel="noreferrer">
                     <img src={AgroWaste} className="zoom" alt="Digital Agro-Waste Management System" width="100%" />
@@ -351,7 +368,7 @@ const Projects = () => (
                 <h2>Agro-Waste Management System</h2>
                 <p>Developed a MERN stack dashboard to facilitate efficient farmer-authority interaction, featuring automated auction handling and real-time bidding logic for optimized waste management.</p>
             </div>
-            
+
             <div className="project">
                 <a href="https://github.com/het1143/Electricity-Bill-Management" target="_blank" rel="noreferrer">
                     <img src={ElectBillManag} className="zoom" alt="Electricity Bill Management System" width="100%" />
@@ -373,22 +390,19 @@ const Projects = () => (
 );
 
 
+// --- RESEARCH PROJECTS COMPONENT ---
 const ResProjects = () => (
-    <div className="projects-container" id="res-projects">
+    <div id="res-projects" style={{ padding: '5% 3%', width: '100%', textAlign: 'justify' }}>
         <h1>Research Projects</h1>
-        <div className="projects-grid">
-            <div className="project" style={{ gridColumn: "1 / -1" }}>
-                <a href="http://jscglobal.org/volume-14-issue-1-january-2025/" target="_blank" rel="noreferrer">
-                    <h2>Sustainable Crop Residue Management Through Digital Mediation</h2>
-                </a>
-                <p>
-                    The research paper "Sustainable Crop Residue Management Through Digital Mediation," authored by Het Patel and Deepak Vegda, addresses the severe air pollution crisis in Delhi caused largely by crop residue (stubble) burning in neighboring states like Punjab. The authors identify that the shift to mechanical harvesting, which leaves significant stalk residue, combined with the short time window between rice harvesting and wheat sowing, drives farmers to burn stubble as a quick, cost-effective clearing method. To mitigate the resulting environmental degradation and soil nutrient depletion, the paper proposes a "Digital Mediation" model where the government acts as an intermediary between farmers and industrial sectors.
-                </p>
-                <p>
-                    In this proposed system, farmers register on a government portal and request harvest support via a toll-free hotline. Third-party services are then dispatched to harvest crops and collect the residue, which is transported to government warehouses rather than being burned. This collected waste is subsequently sold through an online auction to industries for use in biomass energy, paper production, animal feed, and construction materials. This closed-loop solution aims to transform agricultural waste into an economic asset, thereby reducing pollution while creating a sustainable bioeconomy.
-                </p>
-            </div>
-        </div>
+        <a href="http://jscglobal.org/volume-14-issue-1-january-2025/" target="_blank" rel="noreferrer">
+            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Sustainable Crop Residue Management Through Digital Mediation</h2>
+        </a>
+        <p style={{ fontSize: '1.25rem', lineHeight: '1.8' }}>
+            The research paper "Sustainable Crop Residue Management Through Digital Mediation," authored by Het Patel and Deepak Vegda, addresses the severe air pollution crisis in Delhi caused largely by crop residue (stubble) burning in neighboring states like Punjab. The authors identify that the shift to mechanical harvesting, which leaves significant stalk residue, combined with the short time window between rice harvesting and wheat sowing, drives farmers to burn stubble as a quick, cost-effective clearing method. To mitigate the resulting environmental degradation and soil nutrient depletion, the paper proposes a "Digital Mediation" model where the government acts as an intermediary between farmers and industrial sectors.
+        </p>
+        <p style={{ fontSize: '1.25rem', lineHeight: '1.8' }}>
+            In this proposed system, farmers register on a government portal and request harvest support via a toll-free hotline. Third-party services are then dispatched to harvest crops and collect the residue, which is transported to government warehouses rather than being burned. This collected waste is subsequently sold through an online auction to industries for use in biomass energy, paper production, animal feed, and construction materials. This closed-loop solution aims to transform agricultural waste into an economic asset, thereby reducing pollution while creating a sustainable bioeconomy.
+        </p>
     </div>
 );
 
@@ -415,32 +429,32 @@ const Contact = () => {
                 <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
                 <form className="contact-form" noValidate autoComplete="off">
                     <div className="form-row">
-                        <input 
-                            type="text" 
-                            className="custom-input" 
-                            placeholder="Your Name *" 
+                        <input
+                            type="text"
+                            className="custom-input"
+                            placeholder="Your Name *"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
-                        <input 
-                            type="text" 
-                            className="custom-input" 
-                            placeholder="Email / Phone *" 
+                        <input
+                            type="text"
+                            className="custom-input"
+                            placeholder="Email / Phone *"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <textarea 
-                        className="custom-input custom-textarea" 
-                        placeholder="Message *" 
+                    <textarea
+                        className="custom-input custom-textarea"
+                        placeholder="Message *"
                         rows={6}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     ></textarea>
                     <div className="button-container">
-                        <Button 
-                            variant="contained" 
-                            endIcon={<SendIcon />} 
+                        <Button
+                            variant="contained"
+                            endIcon={<SendIcon />}
                             onClick={handleSubmit}
                             className="send-button"
                         >
@@ -481,17 +495,17 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
-                
+
                 <Navigation mode={mode} setMode={setMode} />
-                
+
                 <div style={{ transitionDuration: '700ms' }}>
-                    
+
                     <div style={{
                         backgroundImage: `url(${mode === 'dark' ? bgDark : bgLight})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
-                        paddingBottom: '40px' 
+                        paddingBottom: '40px'
                     }}>
                         <Intro />
                     </div>
@@ -503,7 +517,7 @@ function App() {
                     <ResProjects />
                     <Contact />
                 </div>
-                
+
                 <Footer />
             </div>
         </ThemeProvider>
